@@ -17,6 +17,8 @@
             --text-sub: #64748b;
             --border: #e2e8f0;
             --accent-yellow: #fbbf24;
+            --success: #10b981;
+            --danger: #ef4444;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
@@ -29,47 +31,55 @@
         .logo-name { font-size: 1.5rem; font-weight: 800; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
 
         /* HERO BANNER */
-        .hero { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: white; padding: 80px 20px; text-align: center; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; margin-bottom: -40px; }
-        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .hero { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: white; padding: 70px 20px; text-align: center; border-bottom-left-radius: 40px; border-bottom-right-radius: 40px; margin-bottom: -40px; }
+        .hero h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
 
         /* SEARCH BAR */
         .search-area { max-width: 600px; margin: 0 auto 50px auto; padding: 0 20px; position: relative; z-index: 10; }
-        .search-input-wrapper { background: var(--card-bg); display: flex; align-items: center; padding: 15px 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid var(--border); }
+        .search-input-wrapper { background: var(--card-bg); display: flex; align-items: center; padding: 15px 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 1px solid var(--border); }
         .search-input-wrapper input { border: none; outline: none; width: 100%; font-size: 1.05rem; margin-left: 10px; font-weight: 500; }
 
         /* COURSE GRID */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 35px; }
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding-bottom: 60px; }
 
         /* COURSE CARD */
         .card { background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; display: flex; flex-direction: column; position: relative; }
-        .card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); border-color: var(--primary-light); }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 25px 45px -12px rgba(79, 70, 229, 0.18); border-color: var(--primary-light); }
         
-        .img-box { height: 240px; width: 100%; overflow: hidden; background: #e2e8f0; position: relative; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
-        .card-tag { position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
+        .img-box { height: 260px; width: 100%; overflow: hidden; background: #e2e8f0; position: relative; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .card:hover .img-box img { transform: scale(1.04); }
+        .card-tag { position: absolute; top: 15px; left: 15px; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(5px); color: white; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; z-index: 2; }
 
-        .info-box { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .info-box { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
         .teacher-name { color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
-        .course-title { font-size: 1.2rem; font-weight: 700; line-height: 1.4; color: var(--text-main); margin-bottom: 15px; min-height: 55px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .course-title { font-size: 1.15rem; font-weight: 700; line-height: 1.4; color: var(--text-main); margin-bottom: 15px; min-height: 52px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         
-        .card-footer { margin-top: auto; padding-top: 15px; border-top: 1px dotted var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-sub); }
+        .card-footer { margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-sub); }
 
         /* POPUP MODAL */
-        .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(15,23,42,0.8); backdrop-filter: blur(8px); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: white; padding: 40px; border-radius: 30px; max-width: 450px; width: 100%; text-align: center; animation: zoomIn 0.3s ease; }
-        @keyframes zoomIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .modal-icon { width: 70px; height: 70px; background: #fef3c7; color: #d97706; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px auto; }
-        .modal input { width: 100%; padding: 15px; border: 2px solid var(--border); border-radius: 15px; margin: 20px 0; font-size: 1.2rem; text-align: center; font-weight: 700; outline: none; }
-        .modal input:focus { border-color: var(--primary); }
-        .btn-start { background: var(--primary); color: white; border: none; padding: 15px 30px; width: 100%; border-radius: 15px; font-weight: 700; cursor: pointer; font-size: 1.1rem; }
-        
-        /* VIDEO PAGE */
-        #videoArea { display: none; padding: 40px 5%; max-width: 1000px; margin: 0 auto; }
-        .video-frame { background: black; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.3); aspect-ratio: 16/9; margin: 25px 0; }
-        .btn-back { display: inline-flex; align-items: center; gap: 8px; color: var(--text-sub); text-decoration: none; font-weight: 600; cursor: pointer; padding: 10px 20px; border: 1px solid var(--border); border-radius: 12px; transition: 0.2s; }
-        .btn-back:hover { background: white; color: var(--primary); }
+        .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(15,23,42,0.75); backdrop-filter: blur(6px); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: white; padding: 40px 30px; border-radius: 28px; max-width: 440px; width: 100%; text-align: center; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); animation: zoomIn 0.3s ease; }
+        @keyframes zoomIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: var(--text-sub); }
+        .modal-icon { width: 64px; height: 64px; background: #e0e7ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; }
+        .modal h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; }
+        .modal input { width: 100%; padding: 15px; border: 2px solid var(--border); border-radius: 14px; margin: 18px 0; font-size: 1.15rem; text-align: center; font-weight: 700; outline: none; transition: 0.2s; }
+        .modal input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
+        .btn-start { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        .btn-start:hover { background: #4338ca; }
+        .get-code-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 18px; color: var(--primary); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+        .get-code-link:hover { text-decoration: underline; }
+
+        /* VIDEO AREA */
+        #videoArea { display: none; padding: 40px 20px; max-width: 950px; margin: 0 auto; }
+        .video-frame { background: black; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); aspect-ratio: 16/9; margin: 25px 0; position: relative; }
+        .video-frame iframe { width: 100%; height: 100%; border: none; }
+        .btn-back { display: inline-flex; align-items: center; gap: 8px; color: var(--text-main); text-decoration: none; font-weight: 600; cursor: pointer; padding: 10px 20px; background: white; border: 1px solid var(--border); border-radius: 12px; transition: 0.2s; }
+        .btn-back:hover { background: var(--background); }
+        .success-banner { background: #dcfce7; color: #166534; padding: 15px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
@@ -89,7 +99,7 @@
     <div id="homePage">
         <header class="hero">
             <h1>Hành Trình Chinh Phục Nguyện Vọng 1</h1>
-            <p>Hệ thống bài giảng đặc quyền dành cho học sinh học viện TƯƠNG LAI SÁNG. Cập nhật mới nhất 2024.</p>
+            <p>Hệ thống bài giảng đặc quyền dành cho học sinh học viện TƯƠNG LAI SÁNG.</p>
         </header>
 
         <div class="search-area">
@@ -104,90 +114,90 @@
                 
                 <div class="card" onclick="startCourse('KHÓA TOÁN 12 - THẦY TRÍ', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
                     <div class="img-box">
-                        <span class="card-tag">Học Offline & Online</span>
-                        <img src="https://lh3.googleusercontent.com/d/1O9_f-F4lS6z5nS8L7g1f_1r9-O4v5lS6" alt="Thầy Trí">
+                        <span class="card-tag">Lớp 12 ôn thi</span>
+                        <img src="https://i.postimg.cc/kMYkJcS9/download.jpg" alt="Thầy Trí">
                     </div>
                     <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:16px">verified</span> THẦY TRÍ</div>
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
                         <div class="course-title">KHÓA TOÁN 12 - THẦY TRÍ</div>
                         <div class="card-footer">
-                            <span>50+ Bài giảng</span>
+                            <span>Bài giảng gốc</span>
                             <span style="color:var(--success); font-weight:700">Đang diễn ra</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" onclick="startCourse('Văn Cô Sương Mai', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                    <div class="img-box">
-                        <span class="card-tag">Học Online</span>
-                        <img src="https://lh3.googleusercontent.com/d/1Q-A-n5v-O7r-u6L8j1f_1r9-O4v5lS6" alt="Cô Sương Mai">
-                    </div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:16px">verified</span> CÔ SƯƠNG MAI</div>
-                        <div class="course-title">KHÓA CẬP NHẬT GẦN XONG</div>
-                        <div class="card-footer">
-                            <span>Sắp ra mắt</span>
-                            <span style="color:var(--danger); font-weight:700">Đang cập nhật</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" onclick="startCourse('Sử Cô Sen', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                    <div class="img-box">
-                        <span class="card-tag">Luyện Đề QG</span>
-                        <img src="https://lh3.googleusercontent.com/d/1S-A-n5v-O7r-u6L8j1f_1r9-O4v5lS6" alt="Cô Sen">
-                    </div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:16px">verified</span> CÔ SEN</div>
-                        <div class="course-title">KHÓA CẬP NHẬT GẦN XONG</div>
-                        <div class="card-footer">
-                            <span>Luyện thi ĐH</span>
-                            <span style="color:var(--danger); font-weight:700">Đang cập nhật</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" onclick="startCourse('Anh Cô Mai Phương', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                    <div class="img-box">
-                        <span class="card-tag">Mất gốc Anh</span>
-                        <img src="https://lh3.googleusercontent.com/d/1M-A-n5v-O7r-u6L8j1f_1r9-O4v5lS6" alt="Cô Mai Phương">
-                    </div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:16px">verified</span> CÔ MAI PHƯƠNG</div>
-                        <div class="course-title">KHÓA CẬP NHẬT GẦN XONG</div>
-                        <div class="card-footer">
-                            <span>Ôn tập Anh</span>
-                            <span style="color:var(--danger); font-weight:700">Đang cập nhật</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="card" onclick="startCourse('KHÓA TOÁN - ANH GIÁO KID', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
                     <div class="img-box">
-                        <span class="card-tag">Toán Công Nghệ</span>
-                        <img src="https://lh3.googleusercontent.com/d/1K-A-n5v-O7r-u6L8j1f_1r9-O4v5lS6" alt="Anh Giáo Kid">
+                        <span class="card-tag">Tư duy giải nhanh</span>
+                        <img src="https://i.postimg.cc/FF2XbpH7/download.jpg" alt="Anh Giáo Kid">
                     </div>
                     <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:16px">verified</span> ANH GIÁO KID</div>
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> ANH GIÁO KID</div>
                         <div class="course-title">KHÓA TOÁN - ANH GIÁO KID</div>
                         <div class="card-footer">
-                            <span>Tư duy mới</span>
+                            <span>Chuyên đề hay</span>
                             <span style="color:var(--success); font-weight:700">Đang diễn ra</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="card" onclick="startCourse('Địa Cô Mai Anh', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="card" onclick="startCourse('KHÓA VĂN - CÔ SƯƠNG MAI', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
                     <div class="img-box">
-                        <span class="card-tag">Địa lý 12</span>
-                        <img src="https://lh3.googleusercontent.com/d/1L-A-n5v-O7r-u6L8j1f_1r9-O4v5lS6" alt="Cô Mai Anh">
+                        <span class="card-tag">Ngữ Văn THPT</span>
+                        <img src="https://i.postimg.cc/mD25Rz2x/download.jpg" alt="Cô Sương Mai">
                     </div>
                     <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:16px">verified</span> CÔ MAI ANH</div>
-                        <div class="course-title">KHÓA CẬP NHẬT GẦN XONG</div>
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> CÔ SƯƠNG MAI</div>
+                        <div class="course-title">KHÓA VĂN - CÔ SƯƠNG MAI</div>
                         <div class="card-footer">
-                            <span>Sơ đồ tư duy</span>
-                            <span style="color:var(--danger); font-weight:700">Đang cập nhật</span>
+                            <span>Bài học mới</span>
+                            <span style="color:var(--success); font-weight:700">Sẵn sàng</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="startCourse('KHÓA SỬ - CÔ SEN', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="img-box">
+                        <span class="card-tag">Lịch Sử 12</span>
+                        <img src="https://i.postimg.cc/RZtrbHqc/lich-su-co-huong-sen.jpg" alt="Cô Sen">
+                    </div>
+                    <div class="info-box">
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> CÔ SEN</div>
+                        <div class="course-title">KHÓA SỬ - CÔ SEN</div>
+                        <div class="card-footer">
+                            <span>Luyện thi ĐH</span>
+                            <span style="color:var(--success); font-weight:700">Sẵn sàng</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="startCourse('KHÓA ANH - CÔ MAI PHƯƠNG', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="img-box">
+                        <span class="card-tag">Tiếng Anh QG</span>
+                        <img src="https://i.postimg.cc/pdP0YhjJ/download.jpg" alt="Cô Mai Phương">
+                    </div>
+                    <div class="info-box">
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> CÔ MAI PHƯƠNG</div>
+                        <div class="course-title">KHÓA ANH - CÔ MAI PHƯƠNG</div>
+                        <div class="card-footer">
+                            <span>Trọng tâm kiến thức</span>
+                            <span style="color:var(--success); font-weight:700">Sẵn sàng</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" onclick="startCourse('KHÓA ĐỊA - CÔ MAI ANH', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="img-box">
+                        <span class="card-tag">Địa Lý 12</span>
+                        <img src="https://i.postimg.cc/xTyMGsP2/download.jpg" alt="Cô Mai Anh">
+                    </div>
+                    <div class="info-box">
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> CÔ MAI ANH</div>
+                        <div class="course-title">KHÓA ĐỊA - CÔ MAI ANH</div>
+                        <div class="card-footer">
+                            <span>Kỹ năng Atlat</span>
+                            <span style="color:var(--success); font-weight:700">Sẵn sàng</span>
                         </div>
                     </div>
                 </div>
@@ -198,26 +208,29 @@
 
     <div class="modal" id="passModal">
         <div class="modal-content">
-            <div class="modal-icon"><span class="material-symbols-outlined" style="font-size:35px">lock_open</span></div>
-            <h2 id="targetTitle">Mở Khóa Khóa Học</h2>
-            <p style="color:var(--text-sub); font-size:0.9rem">Vui lòng nhập Mã Tổng 24h để truy cập bài giảng này.</p>
-            <input type="text" id="passInput" placeholder="DÁN MÃ VÀO ĐÂY...">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-icon"><span class="material-symbols-outlined" style="font-size:32px">lock</span></div>
+            <h3 id="targetTitle">Yêu Cầu Mở Khóa</h3>
+            <p style="color:var(--text-sub); font-size:0.9rem">Nhập Mã Tổng 24h để mở khóa bài giảng từ hệ thống.</p>
+            <input type="text" id="passInput" placeholder="NHẬP MÃ XÁC THỰC...">
             <button class="btn-start" onclick="verifyAccess()">Xác Nhận & Vào Học</button>
-            <div style="margin-top:20px">
-                <a href="layma.html" target="_blank" style="color:var(--primary); font-weight:600; text-decoration:none">Chưa có mã? Lấy mã tại đây</a>
+            <div>
+                <a href="layma.html" target="_blank" class="get-code-link">
+                    Lấy mã mở khóa nhanh tại đây <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+                </a>
             </div>
             <p id="alertMsg" style="margin-top:15px; font-weight:700; color:var(--danger)"></p>
         </div>
     </div>
 
     <div id="videoArea">
-        <div class="btn-back" onclick="goHome()"><span class="material-symbols-outlined">arrow_back</span> Quay lại danh sách</div>
+        <div class="btn-back" onclick="goHome()"><span class="material-symbols-outlined" style="font-size:18px">arrow_back</span> Quay lại danh sách</div>
         <h1 id="playingTitle" style="margin-top:20px; font-weight:800; color:var(--primary)">TIÊU ĐỀ BÀI HỌC</h1>
         <div class="video-frame">
             <iframe id="mainPlayer" src="" allowfullscreen></iframe>
         </div>
-        <div style="background:#dcfce7; color:#166534; padding:15px; border-radius:12px; font-weight:600">
-            ✅ Bạn đang truy cập nội dung an toàn từ học viện TƯƠNG LAI SÁNG.
+        <div class="success-banner">
+            <span class="material-symbols-outlined">check_circle</span> Hệ thống đã điểm danh thành công. Chúc bạn có một buổi học hiệu quả tại TƯƠNG LAI SÁNG!
         </div>
     </div>
 
@@ -228,19 +241,23 @@
         function startCourse(name, url) {
             tempTitle = name;
             tempUrl = url;
-            document.getElementById("targetTitle").innerText = name;
+            document.getElementById("targetTitle").innerText = "Mở khóa: " + name;
             document.getElementById("passModal").style.display = "flex";
             document.getElementById("passInput").value = "";
             document.getElementById("alertMsg").innerText = "";
         }
 
+        function closeModal() {
+            document.getElementById("passModal").style.display = "none";
+        }
+
         function verifyAccess() {
             const code = document.getElementById("passInput").value.trim();
             const msg = document.getElementById("alertMsg");
-            if(!code) { msg.innerText = "Bạn chưa nhập mã!"; return; }
+            if(!code) { msg.innerText = "Bạn chưa nhập mã mở khóa!"; return; }
 
             msg.style.color = "orange";
-            msg.innerText = "Đang kiểm tra...";
+            msg.innerText = "Đang xác thực mã...";
 
             fetch(`${API}?action=checkCode&code=${encodeURIComponent(code)}`)
             .then(r => r.json())
@@ -249,14 +266,18 @@
                     fetch(`${API}?action=attendance&khoaHoc=${encodeURIComponent(tempTitle)}`);
                     document.getElementById("passModal").style.display = "none";
                     document.getElementById("homePage").style.display = "none";
-                    document.getElementById("playingTitle").innerText = tempTitle;
+                    document.getElementById("playingTitle").innerText = tempTitle.toUpperCase();
                     document.getElementById("mainPlayer").src = tempUrl;
                     document.getElementById("videoArea").style.display = "block";
                     window.scrollTo(0,0);
                 } else {
                     msg.style.color = "var(--danger)";
-                    msg.innerText = "Mã sai hoặc đã hết hạn!";
+                    msg.innerText = "Mã xác thực không chính xác hoặc đã hết hạn!";
                 }
+            })
+            .catch(() => {
+                msg.style.color = "var(--danger)";
+                msg.innerText = "Lỗi kết nối máy chủ!";
             });
         }
 
@@ -275,10 +296,9 @@
             }
         }
 
-        // Tắt popup khi bấm ngoài
         window.onclick = function(e) {
             if(e.target == document.getElementById("passModal")) {
-                document.getElementById("passModal").style.display = "none";
+                closeModal();
             }
         }
     </script>
