@@ -49,14 +49,14 @@
         .card { background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; display: flex; flex-direction: column; position: relative; }
         .card:hover { transform: translateY(-10px); box-shadow: 0 25px 45px -12px rgba(79, 70, 229, 0.18); border-color: var(--primary-light); }
         
-        .img-box { height: 200px; width: 100%; overflow: hidden; background: #e2e8f0; position: relative; }
+        .img-box { height: 180px; width: 100%; overflow: hidden; background: #e2e8f0; position: relative; }
         .img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .card:hover .img-box img { transform: scale(1.04); }
         .card-tag { position: absolute; top: 15px; left: 15px; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(5px); color: white; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; z-index: 2; }
 
-        .info-box { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
+        .info-box { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
         .teacher-name { color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
-        .course-title { font-size: 1.1rem; font-weight: 700; line-height: 1.4; color: var(--text-main); margin-bottom: 15px; min-height: 52px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .course-title { font-size: 1.05rem; font-weight: 700; line-height: 1.4; color: var(--text-main); margin-bottom: 15px; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         
         .card-footer { margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-sub); }
 
@@ -67,9 +67,13 @@
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: var(--text-sub); }
         .modal-icon { width: 64px; height: 64px; background: #e0e7ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; }
         
-        .modal input { width: 100%; padding: 15px; border: 2px solid var(--border); border-radius: 14px; margin: 18px 0 12px 0; font-size: 1.15rem; text-align: center; font-weight: 700; outline: none; transition: 0.2s; }
-        .modal input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
-        
+        /* Ô NHẬP MÃ CÓ NÚT COPY / PASTE */
+        .input-group { position: relative; margin: 18px 0 12px 0; display: flex; align-items: center; }
+        .input-group input { width: 100%; padding: 15px 90px 15px 15px; border: 2px solid var(--border); border-radius: 14px; font-size: 1.15rem; font-weight: 700; outline: none; transition: 0.2s; text-align: left; }
+        .input-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
+        .btn-copy-fast { position: absolute; right: 10px; background: #f1f5f9; border: 1px solid var(--border); padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; color: var(--primary); cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 4px; }
+        .btn-copy-fast:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
         .btn-start { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: 0.2s; margin-bottom: 15px; }
         .btn-start:hover { background: #4338ca; }
 
@@ -107,7 +111,7 @@
     <div id="homePage">
         <header class="hero">
             <h1>Hành Trình Chinh Phục Nguyện Vọng 1</h1>
-            <p>Hệ thống bài giảng Chuyên đề Toán Thầy Trí & Thầy Cô Học Viện.</p>
+            <p>Hệ thống bài giảng Chuyên đề Toàn Diện 12.</p>
         </header>
 
         <div class="search-area">
@@ -120,13 +124,14 @@
         <main class="container">
             <div class="course-grid" id="courseList">
                 
-                <!-- BÀI GIẢNG THỰC TẾ CỦA THẦY TRÍ (CHƯƠNG I) -->
+                <!-- ==================== KHÓA THẦY TRÍ TOÀN BỘ CÁC CHƯƠNG ==================== -->
+                <!-- CHƯƠNG I -->
                 <div class="card" onclick="startCourse('Thầy Trí - Bài 1: Tính Đơn Điệu Hàm Số', 'https://www.youtube.com/embed/S2pE8-bF3V0')">
                     <div class="img-box"><span class="card-tag">Chương I</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài 1: Tính đơn điệu của hàm số (Đầy đủ tiết 1 - 4)</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Đã cập nhật</span></div>
+                        <div class="course-title">Bài 1: Tính đơn điệu của hàm số (Tiết 1 - Tiết 4 đầy đủ)</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
                     </div>
                 </div>
 
@@ -134,8 +139,8 @@
                     <div class="img-box"><span class="card-tag">Chương I</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài 2: Cực trị của hàm số (Khảo sát chuyên sâu)</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Đã cập nhật</span></div>
+                        <div class="course-title">Bài 2: Cực trị của hàm số (Khảo sát và tính chất nâng cao)</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
                     </div>
                 </div>
 
@@ -143,8 +148,8 @@
                     <div class="img-box"><span class="card-tag">Chương I</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài 3: Giá trị lớn nhất và nhỏ nhất của hàm số</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Đã cập nhật</span></div>
+                        <div class="course-title">Bài 3: Giá trị lớn nhất và nhỏ nhất của hàm số (GTLN - GTNN)</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
                     </div>
                 </div>
 
@@ -152,17 +157,68 @@
                     <div class="img-box"><span class="card-tag">Chương I</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài 5: Đường tiệm cận của đồ thị hàm số</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Đã cập nhật</span></div>
+                        <div class="course-title">Bài 5: Đường tiệm cận của đồ thị hàm số (Đứng và ngang)</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
                     </div>
                 </div>
 
-                <!-- CÁC THẦY CÔ KHÁC (BẠN THAY LINK EMBED SAU NHA) -->
+                <!-- CHƯƠNG II -->
+                <div class="card" onclick="startCourse('Thầy Trí - Chương II: Vectơ & Hệ Tọa Độ', 'https://www.youtube.com/embed/S2pE8-bF3V0')">
+                    <div class="img-box"><span class="card-tag">Chương II</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
+                    <div class="info-box">
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
+                        <div class="course-title">Bài giảng Hệ tọa độ & Phép toán Vectơ trong không gian</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
+                    </div>
+                </div>
+
+                <!-- CHƯƠNG III -->
+                <div class="card" onclick="startCourse('Thầy Trí - Chương III: Mẫu Số Liệu Ghép Nhóm', 'https://www.youtube.com/embed/6iOmsN6-jZ4')">
+                    <div class="img-box"><span class="card-tag">Chương III</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
+                    <div class="info-box">
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
+                        <div class="course-title">Bài giảng Thống kê: Mẫu số liệu ghép nhóm (Phương sai, Tứ phân vị)</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
+                    </div>
+                </div>
+
+                <!-- CHƯƠNG IV -->
+                <div class="card" onclick="startCourse('Thầy Trí - Chương IV: Nguyên Hàm & Tích Phân', 'https://www.youtube.com/embed/3M_A9w5fGg8')">
+                    <div class="img-box"><span class="card-tag">Chương IV</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
+                    <div class="info-box">
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
+                        <div class="course-title">Bài 1 & Bài 2: Khái niệm Nguyên hàm, Tích phân căn bản</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
+                    </div>
+                </div>
+
+                <!-- CHƯƠNG V -->
+                <div class="card" onclick="startCourse('Thầy Trí - Chương V: Xác Suất Có Điều Kiện', 'https://www.youtube.com/embed/WJ_pC6-wU8M')">
+                    <div class="img-box"><span class="card-tag">Chương V</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
+                    <div class="info-box">
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
+                        <div class="course-title">Bài giảng Công thức Bayes & Sơ đồ hình cây chuyên sâu</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
+                    </div>
+                </div>
+
+                <!-- CHƯƠNG VI -->
+                <div class="card" onclick="alert('Chương này hiện Thầy Trí chưa cập nhật link bài học trong tài liệu của bạn!')">
+                    <div class="img-box"><span class="card-tag">Chương VI</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
+                    <div class="info-box">
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">lock</span> THẦY TRÍ</div>
+                        <div class="course-title">Chương VI: Phương trình Đường thẳng, Mặt phẳng, Mặt cầu</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--danger); font-weight:700">Chờ thầy dạy</span></div>
+                    </div>
+                </div>
+
+
+                <!-- ==================== KHÔI PHỤC HOÀN TOÀN CÁC KHÓA HỌC KHÁC ==================== -->
                 <div class="card" onclick="startCourse('Anh Giáo Kid - Tư Duy Giải Nhanh', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
                     <div class="img-box"><span class="card-tag">Toán Mẹo</span><img src="https://i.postimg.cc/FF2XbpH7/download.jpg"></div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> ANH GIÁO KID</div>
-                        <div class="course-title">Khóa học lấy gốc và tư duy giải nhanh trắc nghiệm</div>
+                        <div class="course-title">Khóa học lấy gốc và tư duy giải nhanh trắc nghiệm Toán</div>
                         <div class="card-footer"><span>Toán Lớp 12</span><span style="color:var(--warning); font-weight:700">Chờ cập nhật link</span></div>
                     </div>
                 </div>
@@ -180,7 +236,7 @@
         </main>
     </div>
 
-    <!-- POPUP XÁC THỰC MÃ & VIDEO HƯỚNG DẪN -->
+    <!-- POPUP XÁC THỰC MÃ CÓ NÚT SAO CHÉP TOÀN BỘ -->
     <div class="modal" id="passModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -188,7 +244,13 @@
             <h3 id="targetTitle">Yêu Cầu Mở Khóa</h3>
             <p style="color:var(--text-sub); font-size:0.9rem">Mã mở khóa sẽ được lưu trong 24H trên trình duyệt này.</p>
             
-            <input type="text" id="passInput" placeholder="NHẬP MÃ XÁC THỰC...">
+            <div class="input-group">
+                <input type="text" id="passInput" placeholder="DÁN HOẶC NHẬP MÃ...">
+                <button type="button" class="btn-copy-fast" onclick="copyEntireCode()">
+                    <span class="material-symbols-outlined" id="copyIcon" style="font-size:16px">content_copy</span>
+                    <span id="copyTxt">Chọn hết</span>
+                </button>
+            </div>
             
             <button class="btn-start" onclick="verifyAccess()">Xác Nhận & Vào Học</button>
             
@@ -197,7 +259,6 @@
                     <span class="material-symbols-outlined" style="font-size:16px">vpn_key</span> Lấy mã mở khóa
                 </a>
                 
-                <!-- Điền link video hướng dẫn điểm danh của bạn vào thay dấu # ở dưới -->
                 <a href="https://www.youtube.com/watch?v=MẪU_VIDEO_HƯỚNG_DẪN" target="_blank" class="action-btn btn-guide">
                     <span class="material-symbols-outlined" style="font-size:16px">play_circle</span> Video Hướng Dẫn
                 </a>
@@ -223,12 +284,37 @@
         const API = "https://script.google.com/macros/s/AKfycbw-g6MB18Ii_S4F8aZ-XWofVxUWQIcieYDUK_wOS1hYE1pLwfi9o4_ClCELLkhxzvJDzg/exec";
         let tempTitle = "", tempUrl = "";
 
-        // Kiểm tra xem thiết bị đã được mở khóa 24h trước đó chưa
+        function copyEntireCode() {
+            const inputEl = document.getElementById("passInput");
+            const txtEl = document.getElementById("copyTxt");
+            const iconEl = document.getElementById("copyIcon");
+            
+            if (!inputEl.value.trim()) {
+                alert("Ô nhập mã đang trống, bạn hãy gõ hoặc dán mã vào trước nhé!");
+                return;
+            }
+
+            inputEl.select();
+            inputEl.setSelectionRange(0, 99999);
+
+            try {
+                navigator.clipboard.writeText(inputEl.value);
+                txtEl.innerText = "Đã chép!";
+                iconEl.innerText = "done";
+                setTimeout(() => {
+                    txtEl.innerText = "Chọn hết";
+                    iconEl.innerText = "content_copy";
+                }, 2000);
+            } catch (err) {
+                document.execCommand("copy");
+            }
+        }
+
         function isUnlocked() {
             const expiry = localStorage.getItem("unlocked_expiry");
             if (!expiry) return false;
             if (new Date().getTime() > parseInt(expiry)) {
-                localStorage.removeItem("unlocked_expiry"); // Hết hạn 24h, xóa bộ nhớ
+                localStorage.removeItem("unlocked_expiry");
                 return false;
             }
             return true;
@@ -238,13 +324,10 @@
             tempTitle = name;
             tempUrl = url;
 
-            // Nếu thiết bị ĐÃ ĐƯỢC NHỚ TRONG 24H -> Vào thẳng video luôn, bỏ qua bước nhập mã
             if (isUnlocked()) {
                 openVideoPlayer();
-                // Vẫn gửi lệnh điểm danh ngầm lên Google Sheets cho thầy quản lý
                 fetch(`${API}?action=attendance&khoaHoc=${encodeURIComponent(tempTitle)}`);
             } else {
-                // Nếu chưa mở khóa hoặc hết hạn -> Hiện bảng bắt nhập mã
                 document.getElementById("targetTitle").innerText = "Mở khóa: " + name;
                 document.getElementById("passModal").style.display = "flex";
                 document.getElementById("passInput").value = "";
@@ -277,14 +360,9 @@
             .then(r => r.json())
             .then(data => {
                 if(data.status === "success") {
-                    // XÁC THỰC ĐÚNG: Lưu trạng thái mở khóa trong 24 giờ (24 * 60 * 60 * 1000 ms)
                     const expiryTime = new Date().getTime() + (24 * 60 * 60 * 1000);
                     localStorage.setItem("unlocked_expiry", expiryTime);
-
-                    // Điểm danh lên hệ thống Google Sheets
                     fetch(`${API}?action=attendance&khoaHoc=${encodeURIComponent(tempTitle)}`);
-                    
-                    // Chuyển sang giao diện xem video
                     openVideoPlayer();
                 } else {
                     msg.style.color = "var(--danger)";
