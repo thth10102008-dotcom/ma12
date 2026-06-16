@@ -3,161 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Khóa Học XPS</title>
+    <title>Học Viện Tương Lai Sáng - XPS</title>
+    <!-- Chèn font chữ Inter hiện đại và Icon từ Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: #f0f2f5; padding: 20px; }
-        .header { text-align: center; margin: 30px 0; color: #2c3e50; }
-        .header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        :root {
+            --primary: #4f46e5;
+            --primary-hover: #4338ca;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --border: #e2e8f0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+        body { background: var(--background); color: var(--text-main); padding-bottom: 60px; }
+
+        /* NAVBAR THƯƠNG HIỆU TƯƠNG LAI SÁNG */
+        .navbar { background: var(--card-bg); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.03); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%); color: white; width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3); }
+        .logo-text { font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #4f46e5 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
         
-        /* GIAO DIỆN DANH SÁCH KHÓA HỌC */
-        .grid-courses { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; }
-        .course-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; cursor: pointer; border: 1px solid #e1e4e6; }
-        .course-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
-        .course-img { height: 160px; background: #3498db; color: white; display: flex; align-items: center; justify-content: center; font-size: 3rem; font-weight: bold; }
-        .course-info { padding: 20px; }
-        .course-title { font-size: 1.2rem; color: #2c3e50; margin-bottom: 10px; font-weight: bold; }
-        .course-btn { background: #3498db; color: white; text-align: center; padding: 10px; border-radius: 6px; font-weight: bold; margin-top: 10px; }
+        /* BANNER CHÍNH */
+        .hero-section { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: white; padding: 60px 20px; text-align: center; border-bottom-left-radius: 24px; border-bottom-right-radius: 24px; box-shadow: 0 10px 30px rgba(79, 70, 229, 0.15); }
+        .hero-section h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .hero-section p { font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
 
-        /* KHUNG NHẬP MÃ ĐỂ VÀO HỌC (POPUP) */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: white; padding: 30px; border-radius: 15px; max-width: 400px; width: 90%; text-align: center; position: relative; animation: fadeIn 0.3s ease; }
-        @keyframes fadeIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #aaa; }
-        .modal h3 { margin-bottom: 15px; color: #2c3e50; }
-        .input-code { width: 100%; padding: 12px; border: 2px solid #bdc3c7; border-radius: 8px; margin-bottom: 15px; outline: none; font-size: 1rem; text-align: center; }
-        .btn-verify { background: #2ecc71; color: white; border: none; padding: 12px; width: 100%; font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; }
-        .btn-link { display: block; margin-top: 15px; color: #e74c3c; font-weight: bold; text-decoration: none; font-size: 0.9rem; }
+        /* THANH TÌM KIẾM & BỘ LỌC */
+        .controls-container { max-width: 1100px; margin: -25px auto 40px auto; padding: 0 20px; display: flex; gap: 15px; flex-wrap: wrap; }
+        .search-box { flex: 1; min-width: 280px; background: var(--card-bg); padding: 12px 20px; border-radius: 12px; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); border: 1px solid var(--border); }
+        .search-box input { border: none; outline: none; width: 100%; font-size: 1rem; color: var(--text-main); }
+        
+        /* DANH SÁCH KHÓA HỌC GRID */
+        .main-container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+        .grid-courses { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+        
+        /* THẺ KHÓA HỌC THIẾT KẾ MỚI */
+        .course-card { background: var(--card-bg); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 10px 15px -3px rgba(0,0,0,0.05); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; border: 1px solid var(--border); display: flex; flex-direction: column; height: 100%; }
+        .course-card:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); border-color: #c7d2fe; }
+        .course-img { height: 180px; position: relative; display: flex; align-items: center; justify-content: center; font-size: 4rem; transition: 0.3s; color: white; }
+        .course-badge { position: absolute; top: 15px; left: 15px; background: rgba(255,255,255,0.25); backdrop-filter: blur(8px); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: white; }
+        .course-info { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .course-title { font-size: 1.25rem; font-weight: 600; color: var(--text-main); margin-bottom: 12px; line-height: 1.4; }
+        .course-meta { display: flex; align-items: center; gap: 15px; font-size: 0.85rem; color: var(--text-sub); margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border); }
+        .course-meta span { display: flex; align-items: center; gap: 4px; }
 
-        /* KHU VỰC VIDEO BÀI GIẢNG */
-        .video-container { display: none; max-width: 800px; margin: 30px auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin-top: 15px; }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px; }
-        .btn-back { background: #95a5a6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin-bottom: 15px; font-weight: bold; }
+        /* KHUNG POPUP NHẬP MÃ TỐI GIẢN */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); justify-content: center; align-items: center; z-index: 1000; padding: 20px; }
+        .modal-content { background: var(--card-bg); padding: 35px 30px; border-radius: 20px; max-width: 420px; width: 100%; text-align: center; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: var(--text-sub); transition: 0.2s; }
+        .close-btn:hover { color: var(--text-main); }
+        .modal-icon { width: 60px; height: 60px; background: #e0e7ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; }
+        .modal h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: var(--text-main); }
+        .modal p { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 20px; }
+        .input-code { width: 100%; padding: 14px; border: 2px solid var(--border); border-radius: 12px; margin-bottom: 15px; outline: none; font-size: 1.1rem; text-align: center; font-weight: 600; letter-spacing: 1px; transition: 0.2s; }
+        .input-code:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
+        .btn-verify { background: var(--primary); color: white; border: none; padding: 14px; width: 100%; font-size: 1rem; font-weight: 600; border-radius: 12px; cursor: pointer; transition: 0.2s; }
+        .btn-verify:hover { background: var(--primary-hover); }
+        .btn-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 18px; color: var(--primary); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+        .btn-link:hover { text-decoration: underline; }
+
+        /* GIAO DIỆN XEM TRANG VIDEO */
+        .video-container { display: none; max-width: 900px; margin: 40px auto; background: var(--card-bg); padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid var(--border); }
+        .btn-back { background: transparent; color: var(--text-sub); border: 1px solid var(--border); padding: 10px 18px; border-radius: 10px; cursor: pointer; margin-bottom: 20px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: 0.2s; }
+        .btn-back:hover { background: var(--background); color: var(--text-main); border-color: var(--text-sub); }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; margin: 20px 0; background: #000; border-radius: 14px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .success-banner { background: #ecfdf5; color: var(--success); padding: 12px; border-radius: 10px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 0.95rem; }
     </style>
 </head>
 <body>
 
+    <!-- THANH ĐẦU TRANG CÓ LOGO TƯƠNG LAI SÁNG -->
+    <div class="navbar">
+        <a href="#" class="logo-container">
+            <div class="logo-icon">
+                <span class="material-symbols-outlined" style="font-size:26px">auto_stories</span>
+            </div>
+            <div class="logo-text">TƯƠNG LAI SÁNG</div>
+        </a>
+    </div>
+
+    <!-- 1. TRANG CHỦ DANH SÁCH BÀI HỌC -->
     <div id="mainPage">
-        <div class="header">
-            <h1>📚 HỆ THỐNG KHÓA HỌC XPS 📚</h1>
-            <p>Chọn khóa học bên dưới để bắt đầu bài học của bạn</p>
+        <div class="hero-section">
+            <h1>Học Tập Không Giới Hạn</h1>
+            <p>Chào mừng bạn đến với Hệ thống học trực tuyến TƯƠNG LAI SÁNG. Vui lòng nhận Mã Tổng 24h để mở khóa bài học.</p>
         </div>
 
-        <div class="grid-courses">
-            <div class="course-card" onclick="openGate('Toán 12', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <div class="course-img" style="background: #3498db;">📊</div>
-                <div class="course-info">
-                    <div class="course-title">Khóa Học Toán Lớp 12</div>
-                    <div class="course-btn">Vào Học Ngay</div>
-                </div>
+        <!-- Tìm kiếm -->
+        <div class="controls-container">
+            <div class="search-box">
+                <span class="material-symbols-outlined" style="color:var(--text-sub)">search</span>
+                <input type="text" id="searchBar" oninput="searchCourses()" placeholder="Tìm kiếm tên khóa học bạn muốn tìm...">
             </div>
+        </div>
 
-            <div class="course-card" onclick="openGate('Vật Lý 12', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <div class="course-img" style="background: #e67e22;">⚡</div>
-                <div class="course-info">
-                    <div class="course-title">Khóa Học Vật Lý Lớp 12</div>
-                    <div class="course-btn">Vào Học Ngay</div>
+        <!-- Khung chứa các Card môn học -->
+        <div class="main-container">
+            <div class="grid-courses" id="courseGrid">
+                
+                <!-- Khóa 1 -->
+                <div class="course-card" onclick="openGate('Toán Lớp 12', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="course-img" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">📊
+                        <span class="course-badge">Video Gốc</span>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-title">Chuyên Đề Giải Nhanh Toán Lớp 12 Cực Hay</div>
+                        <div class="course-meta">
+                            <span><span class="material-symbols-outlined" style="font-size:16px">schedule</span> 45 phút</span>
+                            <span><span class="material-symbols-outlined" style="font-size:16px">visibility</span> Lớp 12</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="course-card" onclick="openGate('Hóa Học 11', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                <div class="course-img" style="background: #9b59b6;">🧪</div>
-                <div class="course-info">
-                    <div class="course-title">Khóa Học Hóa Học Lớp 11</div>
-                    <div class="course-btn">Vào Học Ngay</div>
+                <!-- Khóa 2 -->
+                <div class="course-card" onclick="openGate('Vật Lý Lớp 12', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="course-img" style="background: linear-gradient(135deg, #f59e0b, #d97706);">⚡
+                        <span class="course-badge">Lý Thuyết</span>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-title">Tổng Ôn Kiến Thức Vật Lý Lớp 12 Luyện Thi ĐH</div>
+                        <div class="course-meta">
+                            <span><span class="material-symbols-outlined" style="font-size:16px">schedule</span> 60 phút</span>
+                            <span><span class="material-symbols-outlined" style="font-size:16px">visibility</span> Lớp 12</span>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Khóa 3 -->
+                <div class="course-card" onclick="openGate('Hóa Học Lớp 11', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                    <div class="course-img" style="background: linear-gradient(135deg, #ec4899, #be185d);">🧪
+                        <span class="course-badge">Bài Tập</span>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-title">Phương Pháp Cân Bằng Hóa Học Lớp 11 Siêu Tốc</div>
+                        <div class="course-meta">
+                            <span><span class="material-symbols-outlined" style="font-size:16px">schedule</span> 35 phút</span>
+                            <span><span class="material-symbols-outlined" style="font-size:16px">visibility</span> Lớp 11</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 
+    <!-- 2. POPUP NHẬP MÃ KHÓA BẢO MẬT -->
     <div class="modal" id="codeModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeGate()">&times;</span>
-            <h3 id="modalTitle">Nhập Mã Để Vào Học</h3>
-            <input type="text" id="studentCode" class="input-code" placeholder="Nhập Mã Tổng 24h tại đây...">
-            <button class="btn-verify" onclick="checkMasterCode()">XÁC NHẬN VÀO LỚP</button>
+            <div class="modal-icon">
+                <span class="material-symbols-outlined" style="font-size:32px">lock</span>
+            </div>
+            <h3 id="modalTitle">Yêu cầu mở khóa</h3>
+            <p>Vui lòng điền Mã Tổng 24h để truy cập vào bài học này.</p>
             
-            <a href="https://link-vuot-link-cua-ban.com" target="_blank" class="btn-link">👉 Lấy Mã Tổng 24h Tại Đây (Vượt Link) 👈</a>
-            <p id="errorMsg" style="color: red; margin-top: 10px; font-weight: bold;"></p>
+            <input type="text" id="studentCode" class="input-code" placeholder="NHẬP MÃ TẠI ĐÂY...">
+            <button class="btn-verify" onclick="checkMasterCode()">Xác Nhận Vào Học</button>
+            
+            <!-- Link dẫn sang trang layma.html tự tạo -->
+            <a href="layma.html" target="_blank" class="btn-link">
+                Lấy mã mở khóa (Vượt link) <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+            </a>
+            <p id="errorMsg" style="margin-top: 15px; font-size: 0.9rem; font-weight: 600;"></p>
         </div>
     </div>
 
+    <!-- 3. GIAO DIỆN XEM TRANG BÀI GIẢNG VIDEO -->
     <div class="video-container" id="videoPage">
-        <button class="btn-back" onclick="backToMain()">⬅️ Quay Lại Danh Sách</button>
-        <h2 id="videoTitle" style="color: #2c3e50;">Tên Bài Học</h2>
+        <button class="btn-back" onclick="backToMain()">
+            <span class="material-symbols-outlined" style="font-size:18px">arrow_back</span> Quay lại danh sách
+        </button>
+        <h2 id="videoTitle">Tên Bài Học Chi Tiết</h2>
+        
         <div class="video-wrapper">
-            <iframe id="courseVideo" src="" frameborder="0" allowfullscreen></iframe>
+            <iframe id="courseVideo" src="" allowfullscreen></iframe>
         </div>
-        <p style="color: #2ecc71; font-weight: bold; margin-top: 15px;">🎉 Điểm danh thành công! Chúc bạn học tốt ❤️</p>
+        
+        <div class="success-banner">
+            <span class="material-symbols-outlined">check_circle</span> Hệ thống đã ghi nhận lượt điểm danh. Chúc bạn học tốt cùng TƯƠNG LAI SÁNG!
+        </div>
     </div>
 
     <script>
-        // Đã tự động điền link Web App Google Sheets của bạn vào đây
+        // Tự động giữ link kết nối Web App của bạn
         const API_URL = "https://script.google.com/macros/s/AKfycbw-g6MB18Ii_S4F8aZ-XWofVxUWQIcieYDUK_wOS1hYE1pLwfi9o4_ClCELLkhxzvJDzg/exec";
         
         let currentCourse = "";
         let currentVideo = "";
 
-        // Mở popup nhập mã khi bấm vào khóa học
         function openGate(courseName, videoUrl) {
             currentCourse = courseName;
             currentVideo = videoUrl;
-            document.getElementById("modalTitle").innerText = "🔐 VÀO MÔN: " + courseName.toUpperCase();
+            document.getElementById("modalTitle").innerText = "Mở khóa môn: " + courseName;
             document.getElementById("codeModal").style.display = "flex";
             document.getElementById("errorMsg").innerText = "";
             document.getElementById("studentCode").value = "";
         }
 
-        // Đóng popup nhập mã
         function closeGate() {
             document.getElementById("codeModal").style.display = "none";
         }
 
-        // Kiểm tra Mã Tổng với Google Sheets
         function checkMasterCode() {
             const codeInput = document.getElementById("studentCode").value.trim();
             const errorMsg = document.getElementById("errorMsg");
 
             if (!codeInput) {
-                errorMsg.innerText = "Vui lòng nhập mã!";
+                errorMsg.style.color = "var(--danger)";
+                errorMsg.innerText = "Bạn chưa nhập mã code!";
                 return;
             }
 
             errorMsg.style.color = "orange";
-            errorMsg.innerText = "Đang kiểm tra mã...";
+            errorMsg.innerText = "Đang xác thực thông tin...";
 
-            // Gửi mã lên Google Sheets để kiểm tra xem có khớp ô B2 không
             fetch(`${API_URL}?action=checkCode&code=${encodeURIComponent(codeInput)}`)
                 .then(res => res.json())
                 .then(result => {
                     if (result.status === "success") {
-                        // Nếu đúng mã -> Gửi tiếp lệnh điểm danh môn học đó về Excel
                         fetch(`${API_URL}?action=attendance&khoaHoc=${encodeURIComponent(currentCourse)}`)
                             .then(() => {
-                                // Ẩn trang chủ, hiện video bài học
                                 document.getElementById("codeModal").style.display = "none";
                                 document.getElementById("mainPage").style.display = "none";
-                                document.getElementById("videoTitle").innerText = "📖 BÀI GIẢNG: " + currentCourse.toUpperCase();
+                                document.getElementById("videoTitle").innerText = currentCourse.toUpperCase();
                                 document.getElementById("courseVideo").src = currentVideo;
                                 document.getElementById("videoPage").style.display = "block";
+                                window.scrollTo(0,0);
                             });
                     } else {
-                        errorMsg.style.color = "red";
-                        errorMsg.innerText = "Sai mã rồi! Vui lòng lấy mã mới của ngày hôm nay.";
+                        errorMsg.style.color = "var(--danger)";
+                        errorMsg.innerText = "Mã xác thực không chính xác hoặc đã hết hạn!";
                     }
                 })
                 .catch(err => {
-                    errorMsg.style.color = "red";
-                    errorMsg.innerText = "Lỗi kết nối hệ thống!";
+                    errorMsg.style.color = "var(--danger)";
+                    errorMsg.innerText = "Lỗi kết nối đến máy chủ!";
                 });
         }
 
-        // Quay lại danh sách khóa học
         function backToMain() {
             document.getElementById("videoPage").style.display = "none";
-            document.getElementById("courseVideo").src = ""; // Tắt video đang phát
+            document.getElementById("courseVideo").src = "";
             document.getElementById("mainPage").style.display = "block";
+        }
+
+        // Chức năng tìm kiếm bài học cực xịn
+        function searchCourses() {
+            let filter = document.getElementById('searchBar').value.toUpperCase();
+            let grid = document.getElementById('courseGrid');
+            let cards = grid.getElementsByClassName('course-card');
+            
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByClassName('course-title')[0];
+                if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
         }
     </script>
 </body>
