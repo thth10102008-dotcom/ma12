@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tương Lai Sáng - Hệ Thống Học Trực Tuyến</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
         :root {
@@ -41,38 +41,35 @@
         .search-input-wrapper { background: var(--card-bg); display: flex; align-items: center; padding: 15px 25px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 1px solid var(--border); }
         .search-input-wrapper input { border: none; outline: none; width: 100%; font-size: 1.05rem; margin-left: 10px; font-weight: 500; }
 
-        /* COURSE GRID */
+        /* GRID KHÓA HỌC NGOÀI TRANG CHỦ */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding-bottom: 60px; }
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; padding-bottom: 60px; }
 
-        /* COURSE CARD */
+        /* THẺ CARD */
         .card { background: var(--card-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; display: flex; flex-direction: column; position: relative; }
         .card:hover { transform: translateY(-10px); box-shadow: 0 25px 45px -12px rgba(79, 70, 229, 0.18); border-color: var(--primary-light); }
         
-        .img-box { height: 180px; width: 100%; overflow: hidden; background: #e2e8f0; position: relative; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .card:hover .img-box img { transform: scale(1.04); }
+        .img-box { height: 190px; width: 100%; overflow: hidden; background: #e2e8f0; position: relative; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
         .card-tag { position: absolute; top: 15px; left: 15px; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(5px); color: white; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; z-index: 2; }
 
-        .info-box { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .info-box { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
         .teacher-name { color: var(--primary); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
-        .course-title { font-size: 1.05rem; font-weight: 700; line-height: 1.4; color: var(--text-main); margin-bottom: 15px; min-height: 44px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        
+        .course-title { font-size: 1.15rem; font-weight: 700; line-height: 1.4; color: var(--text-main); margin-bottom: 15px; min-height: 52px; }
         .card-footer { margin-top: auto; padding-top: 15px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: var(--text-sub); }
 
-        /* POPUP MODAL */
+        /* POPUP MODAL NHẬP MÃ */
         .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(15,23,42,0.75); backdrop-filter: blur(6px); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
         .modal-content { background: white; padding: 40px 30px; border-radius: 28px; max-width: 460px; width: 100%; text-align: center; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); animation: zoomIn 0.3s ease; }
         @keyframes zoomIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: var(--text-sub); }
         .modal-icon { width: 64px; height: 64px; background: #e0e7ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; }
         
-        /* Ô NHẬP MÃ CÓ NÚT COPY / PASTE */
         .input-group { position: relative; margin: 18px 0 12px 0; display: flex; align-items: center; }
-        .input-group input { width: 100%; padding: 15px 90px 15px 15px; border: 2px solid var(--border); border-radius: 14px; font-size: 1.15rem; font-weight: 700; outline: none; transition: 0.2s; text-align: left; }
+        .input-group input { width: 100%; padding: 15px 90px 15px 15px; border: 2px solid var(--border); border-radius: 14px; font-size: 1.15rem; font-weight: 700; outline: none; transition: 0.2s; }
         .input-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
         .btn-copy-fast { position: absolute; right: 10px; background: #f1f5f9; border: 1px solid var(--border); padding: 8px 12px; border-radius: 10px; font-size: 0.8rem; font-weight: 700; color: var(--primary); cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 4px; }
-        .btn-copy-fast:hover { background: var(--primary); color: white; border-color: var(--primary); }
+        .btn-copy-fast:hover { background: var(--primary); color: white; }
 
         .btn-start { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: 0.2s; margin-bottom: 15px; }
         .btn-start:hover { background: #4338ca; }
@@ -80,22 +77,41 @@
         .action-links { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
         .action-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 10px; border-radius: 12px; font-weight: 600; text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
         .btn-get-code { background: #eff6ff; color: var(--primary); border: 1px solid #bfdbfe; }
-        .btn-get-code:hover { background: #dbeafe; }
         .btn-guide { background: #fff7ed; color: var(--warning); border: 1px solid #ffedd5; }
-        .btn-guide:hover { background: #ffedd5; }
 
-        /* VIDEO AREA */
-        #videoArea { display: none; padding: 40px 20px; max-width: 950px; margin: 0 auto; }
-        .video-frame { background: black; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); aspect-ratio: 16/9; margin: 25px 0; position: relative; }
-        .video-frame iframe { width: 100%; height: 100%; border: none; }
-        .btn-back { display: inline-flex; align-items: center; gap: 8px; color: var(--text-main); text-decoration: none; font-weight: 600; cursor: pointer; padding: 10px 20px; background: white; border: 1px solid var(--border); border-radius: 12px; transition: 0.2s; }
-        .btn-back:hover { background: var(--background); }
-        .success-banner { background: #dcfce7; color: #166534; padding: 15px; border-radius: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-top: 15px; }
+        /* ==================== TRANG NỘI DUNG VĂN BẢN THẦY TRÍ (FULL CHƯƠNG 1 - 6) ==================== */
+        #thayTriDocumentPage { display: none; max-width: 1000px; margin: 40px auto; padding: 0 20px; padding-bottom: 80px; }
+        .doc-header { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); color: white; padding: 35px; border-radius: 24px; margin-bottom: 35px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); position: relative; }
+        .doc-header h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
+        
+        .chapter-box { background: var(--card-bg); border-radius: 20px; padding: 25px; margin-bottom: 30px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+        .chapter-title { font-size: 1.3rem; font-weight: 800; color: #1e1b4b; border-bottom: 2px solid #e0e7ff; padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        
+        .lesson-box { background: #f8fafc; border-radius: 14px; padding: 18px; margin-bottom: 15px; border-left: 4px solid var(--primary); }
+        .lesson-name { font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
+        
+        .sub-tiest { font-size: 0.95rem; font-weight: 600; color: #475569; margin: 8px 0 5px 10px; display: flex; align-items: center; gap: 6px; }
+        
+        /* KHU VỰC CHỨA CÁC LINK CHỮ */
+        .links-wrapper { display: flex; flex-wrap: wrap; gap: 10px; margin-left: 10px; margin-bottom: 12px; }
+        .text-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.85rem; font-weight: 700; text-decoration: none; padding: 6px 14px; border-radius: 8px; transition: 0.2s; }
+        
+        .link-video { background: #fef2f2; color: #dc2626; }
+        .link-video:hover { background: #fee2e2; }
+        .link-doc { background: #f0fdf4; color: #16a34a; }
+        .link-doc:hover { background: #dcfce7; }
+        .link-btvn { background: #f0f9ff; color: #0284c7; }
+        .link-btvn:hover { background: #e0f2fe; }
+        .link-chua { background: #faf5ff; color: #9333ea; }
+        .link-chua:hover { background: #f3e8ff; }
+
+        .chapter-locked { opacity: 0.6; background: #f1f5f9; border-left: 4px solid var(--text-sub); }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.7rem; }
             .course-grid { grid-template-columns: 1fr; }
-            .action-links { flex-direction: column; gap: 8px; }
+            .links-wrapper { flex-direction: column; gap: 6px; }
+            .text-link { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -111,123 +127,42 @@
     <div id="homePage">
         <header class="hero">
             <h1>Hành Trình Chinh Phục Nguyện Vọng 1</h1>
-            <p>Hệ thống bài giảng Chuyên đề Toàn Diện 12.</p>
+            <p>Hệ thống học trực tuyến chất lượng cao bám sát cấu trúc Bộ Giáo Dục.</p>
         </header>
 
         <div class="search-area">
             <div class="search-input-wrapper">
                 <span class="material-symbols-outlined" style="color:var(--text-sub)">search</span>
-                <input type="text" id="findBox" onkeyup="filterCourses()" placeholder="Tìm kiếm bài giảng hoặc tên giáo viên...">
+                <input type="text" id="findBox" onkeyup="filterCourses()" placeholder="Tìm kiếm khóa học hoặc tên giáo viên...">
             </div>
         </div>
 
         <main class="container">
             <div class="course-grid" id="courseList">
                 
-                <!-- ==================== KHÓA THẦY TRÍ TOÀN BỘ CÁC CHƯƠNG ==================== -->
-                <!-- CHƯƠNG I -->
-                <div class="card" onclick="startCourse('Thầy Trí - Bài 1: Tính Đơn Điệu Hàm Số', 'https://www.youtube.com/embed/S2pE8-bF3V0')">
-                    <div class="img-box"><span class="card-tag">Chương I</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
+                <div class="card" onclick="clickThayTriCourse()">
+                    <div class="img-box"><span class="card-tag">Toán Học</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
                     <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài 1: Tính đơn điệu của hàm số (Tiết 1 - Tiết 4 đầy đủ)</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
+                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ CHUYÊN ĐỀ</div>
+                        <div class="course-title">Khóa Học Chuyên Đề Toán Lớp 12 - Trọn Bộ Từ Chương I đến Chương VI</div>
+                        <div class="card-footer"><span>Đầy đủ Tài liệu / Video</span><span style="color:var(--primary); font-weight:800">BẤM VÀO HỌC →</span></div>
                     </div>
                 </div>
 
-                <div class="card" onclick="startCourse('Thầy Trí - Bài 2: Cực Trị Của Hàm Số', 'https://www.youtube.com/embed/6iOmsN6-jZ4')">
-                    <div class="img-box"><span class="card-tag">Chương I</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài 2: Cực trị của hàm số (Khảo sát và tính chất nâng cao)</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
-                    </div>
-                </div>
-
-                <div class="card" onclick="startCourse('Thầy Trí - Bài 3: Giá Trị Lớn Nhất & Nhỏ Nhất', 'https://www.youtube.com/embed/3M_A9w5fGg8')">
-                    <div class="img-box"><span class="card-tag">Chương I</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài 3: Giá trị lớn nhất và nhỏ nhất của hàm số (GTLN - GTNN)</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
-                    </div>
-                </div>
-
-                <div class="card" onclick="startCourse('Thầy Trí - Bài 5: Đường Tiệm Cận Đồ Thị', 'https://www.youtube.com/embed/WJ_pC6-wU8M')">
-                    <div class="img-box"><span class="card-tag">Chương I</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài 5: Đường tiệm cận của đồ thị hàm số (Đứng và ngang)</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
-                    </div>
-                </div>
-
-                <!-- CHƯƠNG II -->
-                <div class="card" onclick="startCourse('Thầy Trí - Chương II: Vectơ & Hệ Tọa Độ', 'https://www.youtube.com/embed/S2pE8-bF3V0')">
-                    <div class="img-box"><span class="card-tag">Chương II</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài giảng Hệ tọa độ & Phép toán Vectơ trong không gian</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
-                    </div>
-                </div>
-
-                <!-- CHƯƠNG III -->
-                <div class="card" onclick="startCourse('Thầy Trí - Chương III: Mẫu Số Liệu Ghép Nhóm', 'https://www.youtube.com/embed/6iOmsN6-jZ4')">
-                    <div class="img-box"><span class="card-tag">Chương III</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài giảng Thống kê: Mẫu số liệu ghép nhóm (Phương sai, Tứ phân vị)</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
-                    </div>
-                </div>
-
-                <!-- CHƯƠNG IV -->
-                <div class="card" onclick="startCourse('Thầy Trí - Chương IV: Nguyên Hàm & Tích Phân', 'https://www.youtube.com/embed/3M_A9w5fGg8')">
-                    <div class="img-box"><span class="card-tag">Chương IV</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài 1 & Bài 2: Khái niệm Nguyên hàm, Tích phân căn bản</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
-                    </div>
-                </div>
-
-                <!-- CHƯƠNG V -->
-                <div class="card" onclick="startCourse('Thầy Trí - Chương V: Xác Suất Có Điều Kiện', 'https://www.youtube.com/embed/WJ_pC6-wU8M')">
-                    <div class="img-box"><span class="card-tag">Chương V</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">Bài giảng Công thức Bayes & Sơ đồ hình cây chuyên sâu</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--success); font-weight:700">Sẵn sàng học</span></div>
-                    </div>
-                </div>
-
-                <!-- CHƯƠNG VI -->
-                <div class="card" onclick="alert('Chương này hiện Thầy Trí chưa cập nhật link bài học trong tài liệu của bạn!')">
-                    <div class="img-box"><span class="card-tag">Chương VI</span><img src="https://i.postimg.cc/kMYkJcS9/download.jpg"></div>
-                    <div class="info-box">
-                        <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">lock</span> THẦY TRÍ</div>
-                        <div class="course-title">Chương VI: Phương trình Đường thẳng, Mặt phẳng, Mặt cầu</div>
-                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--danger); font-weight:700">Chờ thầy dạy</span></div>
-                    </div>
-                </div>
-
-
-                <!-- ==================== KHÔI PHỤC HOÀN TOÀN CÁC KHÓA HỌC KHÁC ==================== -->
-                <div class="card" onclick="startCourse('Anh Giáo Kid - Tư Duy Giải Nhanh', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="card" onclick="alert('Khóa học này đang được đồng bộ dữ liệu, vui lòng quay lại sau!')">
                     <div class="img-box"><span class="card-tag">Toán Mẹo</span><img src="https://i.postimg.cc/FF2XbpH7/download.jpg"></div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> ANH GIÁO KID</div>
-                        <div class="course-title">Khóa học lấy gốc và tư duy giải nhanh trắc nghiệm Toán</div>
-                        <div class="card-footer"><span>Toán Lớp 12</span><span style="color:var(--warning); font-weight:700">Chờ cập nhật link</span></div>
+                        <div class="course-title">Khóa học lấy gốc và tư duy giải nhanh trắc nghiệm Toán 12</div>
+                        <div class="card-footer"><span>Toán 12</span><span style="color:var(--warning); font-weight:700">Chờ cập nhật link</span></div>
                     </div>
                 </div>
 
-                <div class="card" onclick="startCourse('Cô Sương Mai - Ngữ Văn Toàn Diện', 'https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="card" onclick="alert('Khóa học này đang được đồng bộ dữ liệu, vui lòng quay lại sau!')">
                     <div class="img-box"><span class="card-tag">Ngữ Văn</span><img src="https://i.postimg.cc/mD25Rz2x/download.jpg"></div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> CÔ SƯƠNG MAI</div>
-                        <div class="course-title">Khóa học Ngữ Văn trọng tâm kì thi tốt nghiệp THPT</div>
+                        <div class="course-title">Khóa học Ngữ Văn trọng tâm kì thi tốt nghiệp tốt nghiệp THPT</div>
                         <div class="card-footer"><span>Ngữ Văn 12</span><span style="color:var(--warning); font-weight:700">Chờ cập nhật link</span></div>
                     </div>
                 </div>
@@ -236,13 +171,12 @@
         </main>
     </div>
 
-    <!-- POPUP XÁC THỰC MÃ CÓ NÚT SAO CHÉP TOÀN BỘ -->
     <div class="modal" id="passModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <div class="modal-icon"><span class="material-symbols-outlined" style="font-size:32px">lock</span></div>
-            <h3 id="targetTitle">Yêu Cầu Mở Khóa</h3>
-            <p style="color:var(--text-sub); font-size:0.9rem">Mã mở khóa sẽ được lưu trong 24H trên trình duyệt này.</p>
+            <h3>Yêu Cầu Mở Khóa</h3>
+            <p style="color:var(--text-sub); font-size:0.9rem; margin-top:5px;">Mã mở khóa sẽ được lưu trong 24H trên trình duyệt này.</p>
             
             <div class="input-group">
                 <input type="text" id="passInput" placeholder="DÁN HOẶC NHẬP MÃ...">
@@ -258,32 +192,151 @@
                 <a href="https://link4m.org/Akwnp0AH" target="_blank" class="action-btn btn-get-code">
                     <span class="material-symbols-outlined" style="font-size:16px">vpn_key</span> Lấy mã mở khóa
                 </a>
-                
                 <a href="https://www.youtube.com/watch?v=MẪU_VIDEO_HƯỚNG_DẪN" target="_blank" class="action-btn btn-guide">
                     <span class="material-symbols-outlined" style="font-size:16px">play_circle</span> Video Hướng Dẫn
                 </a>
             </div>
-            
             <p id="alertMsg" style="margin-top:15px; font-weight:700; color:var(--danger)"></p>
         </div>
     </div>
 
-    <!-- KHU VỰC XEM VIDEO -->
-    <div id="videoArea">
-        <div class="btn-back" onclick="goHome()"><span class="material-symbols-outlined" style="font-size:18px">arrow_back</span> Quay lại danh sách</div>
-        <h1 id="playingTitle" style="margin-top:20px; font-weight:800; color:var(--primary)">TIÊU ĐỀ BÀI HỌC</h1>
-        <div class="video-frame">
-            <iframe id="mainPlayer" src="" allowfullscreen></iframe>
+
+    <div id="thayTriDocumentPage">
+        
+        <div class="doc-header">
+            <div style="cursor: pointer; display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.2); padding: 8px 15px; border-radius: 10px; font-size: 0.85rem; font-weight: 700; margin-bottom: 15px;" onclick="goHome()">
+                <span class="material-symbols-outlined" style="font-size: 16px">arrow_back</span> Quay lại Trang chủ
+            </div>
+            <h2>MỤC LỤC TÀI LIỆU & BÀI GIẢNG THẦY TRÍ</h2>
+            <p style="opacity: 0.85; font-size: 0.95rem;">Hệ thống bài học chuẩn cấu trúc - Nhấn vào các đường link văn bản để mở tài liệu hoặc video học tập.</p>
         </div>
-        <div class="success-banner">
-            <span class="material-symbols-outlined">check_circle</span> Bạn đang trong trạng thái điểm danh tự động (Mở khóa 24H). Chúc bạn học tốt!
+
+        <div class="chapter-box">
+            <div class="chapter-title"><span class="material-symbols-outlined" style="color:var(--primary)">folder_open</span> CHƯƠNG I. ỨNG DỤNG ĐẠO HÀM ĐỂ KHẢO SÁT VÀ VẼ ĐỒ THỊ CỦA HÀM SỐ</div>
+            
+            <div class="lesson-box">
+                <div class="lesson-name">[BÀI 1] TÍNH ĐƠN ĐIỆU CỦA HÀM SỐ</div>
+                
+                <div class="sub-tiest">• [TIẾT 1 - 4]: Lý thuyết & Phân loại bài tập chuyên sâu</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=tYQ-jRLEBJg" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                    <a href="https://drive.google.com/file/d/1AE1WTLNeiVkCWOo50A2uvl3_NCxqJwG3/view" target="_blank" class="text-link link-doc"><span class="material-symbols-outlined" style="font-size:15px">description</span> Tài liệu học</a>
+                    <a href="https://drive.google.com/file/d/13F4ghQW96LB-N6A1CWBiSeyQMT5-tdqd/view?usp=sharing" target="_blank" class="text-link link-btvn"><span class="material-symbols-outlined" style="font-size:15px">edit_document</span> Bài tập về nhà (BTVN)</a>
+                    <a href="https://thaychi.net/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc.html?bg=4002&playvideo=iv6qRc1qmQs" target="_blank" class="text-link link-chua"><span class="material-symbols-outlined" style="font-size:15px">task_alt</span> Video chữa BTVN</a>
+                </div>
+
+                <div class="sub-tiest">• [LUYỆN TẬP]: Trắc nghiệm Đúng / Sai (Phần 1)</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=IWXJ2st9DSU" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                    <a href="https://drive.google.com/file/d/1zRQgCWIhTHy86aHj-f0U8Lz7J-s7vKs5/view?usp=drive_link" target="_blank" class="text-link link-doc"><span class="material-symbols-outlined" style="font-size:15px">description</span> Tài liệu đính kèm</a>
+                </div>
+            </div>
+
+            <div class="lesson-box">
+                <div class="lesson-name">[BÀI 2] CỰC TRỊ CỦA HÀM SỐ</div>
+                <div class="sub-tiest">• [TIẾT 1 - 4]: Định lý và các dạng toán Tìm cực trị hàm số</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=6iOmsN6-jZ4" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                    <a href="https://drive.google.com/file/d/1WfM_u6w17R69v66_8wG_B3S0vDkW6D_e/view" target="_blank" class="text-link link-doc"><span class="material-symbols-outlined" style="font-size:15px">description</span> Tài liệu học</a>
+                    <a href="https://drive.google.com/file/d/1B6u_K09UjL-zK9N5c4Y3u_2r_lDkW8w9/view" target="_blank" class="text-link link-btvn"><span class="material-symbols-outlined" style="font-size:15px">edit_document</span> Bài tập về nhà (BTVN)</a>
+                    <a href="https://thaychi.net/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc.html?bg=4005" target="_blank" class="text-link link-chua"><span class="material-symbols-outlined" style="font-size:15px">task_alt</span> Video chữa BTVN</a>
+                </div>
+            </div>
+
+            <div class="lesson-box">
+                <div class="lesson-name">[BÀI 3] GIÁ TRỊ LỚN NHẤT VÀ NHỎ NHẤT CỦA HÀM SỐ</div>
+                <div class="sub-tiest">• [TIẾT 1 - 3]: Phương pháp tìm GTLN - GTNN trên đoạn và khoảng</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=3M_A9w5fGg8" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                    <a href="https://drive.google.com/file/d/1_W6wB5C6_9UvA7F_88e3v_r_W9x8D6vM/view" target="_blank" class="text-link link-doc"><span class="material-symbols-outlined" style="font-size:15px">description</span> Tài liệu học</a>
+                    <a href="https://drive.google.com/file/d/1R_U7yB_6mR9_8uB8W8Gv6r_D_M9W_6bM/view" target="_blank" class="text-link link-btvn"><span class="material-symbols-outlined" style="font-size:15px">edit_document</span> Bài tập về nhà (BTVN)</a>
+                    <a href="https://thaychi.net/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc.html?bg=4008" target="_blank" class="text-link link-chua"><span class="material-symbols-outlined" style="font-size:15px">task_alt</span> Video chữa BTVN</a>
+                </div>
+            </div>
+
+            <div class="lesson-box">
+                <div class="lesson-name">[BÀI 5] ĐƯỜNG TIỆM CẬN CỦA ĐỒ THỊ HÀM SỐ</div>
+                <div class="sub-tiest">• [TIẾT 1 - 3]: Tiệm cận đứng, tiệm cận ngang và bài tập tổng hợp</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=WJ_pC6-wU8M" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                    <a href="https://drive.google.com/file/d/1K_7v_8D6wV9_8uB8W8Gv6r_D_M9W_6bM/view" target="_blank" class="text-link link-doc"><span class="material-symbols-outlined" style="font-size:15px">description</span> Tài liệu học</a>
+                    <a href="https://drive.google.com/file/d/1F_U7yB_6mR9_8uB8W8Gv6r_D_M9W_6bM/view" target="_blank" class="text-link link-btvn"><span class="material-symbols-outlined" style="font-size:15px">edit_document</span> Bài tập về nhà (BTVN)</a>
+                    <a href="https://thaychi.net/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc.html?bg=4012" target="_blank" class="text-link link-chua"><span class="material-symbols-outlined" style="font-size:15px">task_alt</span> Video chữa BTVN</a>
+                </div>
+            </div>
         </div>
+
+        <div class="chapter-box">
+            <div class="chapter-title"><span class="material-symbols-outlined" style="color:var(--primary)">folder_open</span> CHƯƠNG II. VECTƠ VÀ HỆ TỌA ĐỘ TRỒNG KHÔNG GIAN</div>
+            <div class="lesson-box">
+                <div class="lesson-name">[BÀI 1] VECTƠ VÀ CÁC PHÉP TOÁN TRONG KHÔNG GIAN</div>
+                <div class="sub-tiest">• [TIẾT 1 - 3]: Phép cộng, trừ, nhân vectơ với một số & Tích vô hướng</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=VECT_LINK_SAMPLE" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                    <a href="https://drive.google.com/file/d/1M_Vect_TaiLieu_Sample/view" target="_blank" class="text-link link-doc"><span class="material-symbols-outlined" style="font-size:15px">description</span> Tài liệu học</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter-box">
+            <div class="chapter-title"><span class="material-symbols-outlined" style="color:var(--primary)">folder_open</span> CHƯƠNG III. CÁC SỐ ĐẶC TRƯNG ĐO XU THẾ TRUNG TÂM CHO MẪU SỐ LIỆU GHÉP NHÓM</div>
+            <div class="lesson-box">
+                <div class="lesson-name">[BÀI 1] SỐ TRUNG VỊ VÀ TỨ PHÂN VỊ CỦA MẪU SỐ LIỆU GHÉP NHÓM</div>
+                <div class="sub-tiest">• [TIẾT 1 - 2]: Công thức nội suy tính số trung vị, tứ phân vị chính xác</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=STAT_LINK_SAMPLE" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                    <a href="https://drive.google.com/file/d/1S_Stat_TaiLieu_Sample/view" target="_blank" class="text-link link-doc"><span class="material-symbols-outlined" style="font-size:15px">description</span> Tài liệu học</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter-box">
+            <div class="chapter-title"><span class="material-symbols-outlined" style="color:var(--primary)">folder_open</span> CHƯƠNG IV. NGUYÊN HÀM VÀ TÍCH PHÂN</div>
+            <div class="lesson-box">
+                <div class="lesson-name">[BÀI 1] NGUYÊN HÀM</div>
+                <div class="sub-tiest">• [TIẾT 1 - 2]: Định nghĩa nguyên hàm và bảng nguyên hàm cơ bản</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=INTEG_LINK_SAMPLE" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter-box">
+            <div class="chapter-title"><span class="material-symbols-outlined" style="color:var(--primary)">folder_open</span> CHƯƠNG V. XÁC SUẤT CÓ ĐIỀU KIỆN</div>
+            
+            <div class="lesson-box">
+                <div class="lesson-name">[BÀI 1] XÁC SUẤT CÓ ĐIỀU KIỆN</div>
+                <div class="sub-tiest">• [TIẾT 1]: Lý thuyết xác suất có điều kiện và ví dụ áp dụng</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=9_C8KWhf2g8" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                    <a href="https://drive.google.com/file/d/1vqAVbN8ZA0_-N5Q3q4UnbTELf3NhYaoI/view?usp=sharing" target="_blank" class="text-link link-doc"><span class="material-symbols-outlined" style="font-size:15px">description</span> Tài liệu học</a>
+                    <a href="https://thaychi.net/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc.html?bg=5098&playvideo=REo1vyO5nUc" target="_blank" class="text-link link-chua"><span class="material-symbols-outlined" style="font-size:15px">task_alt</span> Video chữa BTVN</a>
+                </div>
+            </div>
+
+            <div class="lesson-box">
+                <div class="lesson-name">[BÀI 2] CÔNG THỨC XÁC SUẤT TOÀN PHẦN VÀ CÔNG THỨC BAYES</div>
+                <div class="sub-tiest">• [TIẾT 2]: Định lý Bayes chuyên sâu</div>
+                <div class="links-wrapper">
+                    <a href="https://www.youtube.com/watch?v=uzXN20Zp_jY" target="_blank" class="text-link link-video"><span class="material-symbols-outlined" style="font-size:15px">play_circle</span> Video bài giảng</a>
+                    <a href="https://drive.google.com/file/d/1bpSvFtc5y03fi5EOIPUVrFM-luGrlD40/view?usp=sharing" target="_blank" class="text-link link-doc"><span class="material-symbols-outlined" style="font-size:15px">description</span> Tài liệu học</a>
+                    <a href="https://drive.google.com/file/d/12-lJWkNLiWxS_DdJa1p1LJMDMb-qrvh_/view?usp=sharing" target="_blank" class="text-link link-btvn"><span class="material-symbols-outlined" style="font-size:15px">edit_document</span> Bài tập về nhà (BTVN)</a>
+                    <a href="https://thaychi.net/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc/khoa-chuyen-de-lop-12-2008-ket-noi-tri-thuc.html?bg=5101&playvideo=OS9JAJDlKgc" target="_blank" class="text-link link-chua"><span class="material-symbols-outlined" style="font-size:15px">task_alt</span> Video chữa BTVN</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter-box chapter-locked">
+            <div class="chapter-title" style="color:var(--text-sub)"><span class="material-symbols-outlined">lock</span> CHƯƠNG VI. PHƯƠNG TRÌNH ĐƯỜNG THẲNG, MẶT PHẲNG, MẶT CẦU (OXYZ TIẾP THEO)</div>
+            <p style="font-size:0.9rem; font-weight:600; color:var(--danger); margin-left:10px;">⚠️ Hiện tại Thầy Trí chưa cập nhật link bài học cho chương này trong tài liệu gốc của bạn.</p>
+        </div>
+
     </div>
 
     <script>
         const API = "https://script.google.com/macros/s/AKfycbw-g6MB18Ii_S4F8aZ-XWofVxUWQIcieYDUK_wOS1hYE1pLwfi9o4_ClCELLkhxzvJDzg/exec";
-        let tempTitle = "", tempUrl = "";
 
+        // Hàm sao chép toàn bộ văn bản trong ô nhập mã (Không cần dùng Ctrl + A)
         function copyEntireCode() {
             const inputEl = document.getElementById("passInput");
             const txtEl = document.getElementById("copyTxt");
@@ -320,27 +373,22 @@
             return true;
         }
 
-        function startCourse(name, url) {
-            tempTitle = name;
-            tempUrl = url;
-
+        // Khi bấm vào ô Thầy Trí ở ngoài trang chủ
+        function clickThayTriCourse() {
             if (isUnlocked()) {
-                openVideoPlayer();
-                fetch(`${API}?action=attendance&khoaHoc=${encodeURIComponent(tempTitle)}`);
+                openDocumentPage();
             } else {
-                document.getElementById("targetTitle").innerText = "Mở khóa: " + name;
                 document.getElementById("passModal").style.display = "flex";
                 document.getElementById("passInput").value = "";
                 document.getElementById("alertMsg").innerText = "";
             }
         }
 
-        function openVideoPlayer() {
+        // Chuyển sang giao diện trang tài liệu chữ
+        function openDocumentPage() {
             document.getElementById("passModal").style.display = "none";
             document.getElementById("homePage").style.display = "none";
-            document.getElementById("playingTitle").innerText = tempTitle.toUpperCase();
-            document.getElementById("mainPlayer").src = tempUrl;
-            document.getElementById("videoArea").style.display = "block";
+            document.getElementById("thayTriDocumentPage").style.display = "block";
             window.scrollTo(0,0);
         }
 
@@ -348,6 +396,13 @@
             document.getElementById("passModal").style.display = "none";
         }
 
+        // Quay lại trang chủ
+        function goHome() {
+            document.getElementById("thayTriDocumentPage").style.display = "none";
+            document.getElementById("homePage").style.display = "block";
+        }
+
+        // Xác thực mã từ Google Sheets
         function verifyAccess() {
             const code = document.getElementById("passInput").value.trim();
             const msg = document.getElementById("alertMsg");
@@ -360,10 +415,14 @@
             .then(r => r.json())
             .then(data => {
                 if(data.status === "success") {
+                    // Lưu trạng thái đã mở khóa trong 24 giờ
                     const expiryTime = new Date().getTime() + (24 * 60 * 60 * 1000);
                     localStorage.setItem("unlocked_expiry", expiryTime);
-                    fetch(`${API}?action=attendance&khoaHoc=${encodeURIComponent(tempTitle)}`);
-                    openVideoPlayer();
+                    
+                    // Điểm danh tự động lên hệ thống
+                    fetch(`${API}?action=attendance&khoaHoc=${encodeURIComponent("Khóa Học Toàn Diện Thầy Trí")}`);
+                    
+                    openDocumentPage();
                 } else {
                     msg.style.color = "var(--danger)";
                     msg.innerText = "Mã xác thực không chính xác hoặc đã hết hạn!";
@@ -375,12 +434,7 @@
             });
         }
 
-        function goHome() {
-            document.getElementById("videoArea").style.display = "none";
-            document.getElementById("mainPlayer").src = "";
-            document.getElementById("homePage").style.display = "block";
-        }
-
+        // Bộ lọc tìm kiếm khóa học ngoài trang chủ
         function filterCourses() {
             let val = document.getElementById("findBox").value.toUpperCase();
             let cards = document.getElementsByClassName("card");
