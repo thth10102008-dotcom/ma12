@@ -19,6 +19,7 @@
             --accent-yellow: #fbbf24;
             --success: #10b981;
             --danger: #ef4444;
+            --warning: #f97316;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
@@ -61,17 +62,27 @@
 
         /* POPUP MODAL */
         .modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(15,23,42,0.75); backdrop-filter: blur(6px); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: white; padding: 40px 30px; border-radius: 28px; max-width: 440px; width: 100%; text-align: center; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); animation: zoomIn 0.3s ease; }
+        .modal-content { background: white; padding: 40px 30px; border-radius: 28px; max-width: 460px; width: 100%; text-align: center; position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); animation: zoomIn 0.3s ease; }
         @keyframes zoomIn { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: var(--text-sub); }
         .modal-icon { width: 64px; height: 64px; background: #e0e7ff; color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; }
         .modal h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; }
-        .modal input { width: 100%; padding: 15px; border: 2px solid var(--border); border-radius: 14px; margin: 18px 0; font-size: 1.15rem; text-align: center; font-weight: 700; outline: none; transition: 0.2s; }
+        
+        .modal input { width: 100%; padding: 15px; border: 2px solid var(--border); border-radius: 14px; margin: 18px 0 12px 0; font-size: 1.15rem; text-align: center; font-weight: 700; outline: none; transition: 0.2s; }
         .modal input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
-        .btn-start { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: 0.2s; }
+        
+        .btn-start { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 1rem; transition: 0.2s; margin-bottom: 15px; }
         .btn-start:hover { background: #4338ca; }
-        .get-code-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 18px; color: var(--primary); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
-        .get-code-link:hover { text-decoration: underline; }
+
+        /* HỆ THỐNG NÚT KÉP (LẤY MÃ VS HƯỚNG DẪN) */
+        .action-links { display: flex; gap: 10px; justify-content: center; margin-top: 10px; }
+        .action-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 10px; border-radius: 12px; font-weight: 600; text-decoration: none; font-size: 0.85rem; transition: 0.2s; }
+        
+        .btn-get-code { background: #eff6ff; color: var(--primary); border: 1px solid #bfdbfe; }
+        .btn-get-code:hover { background: #dbeafe; }
+        
+        .btn-guide { background: #fff7ed; color: var(--warning); border: 1px solid #ffedd5; }
+        .btn-guide:hover { background: #ffedd5; }
 
         /* VIDEO AREA */
         #videoArea { display: none; padding: 40px 20px; max-width: 950px; margin: 0 auto; }
@@ -84,6 +95,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8rem; }
             .course-grid { grid-template-columns: 1fr; }
+            .action-links { flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
@@ -119,7 +131,7 @@
                     </div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> THẦY TRÍ</div>
-                        <div class="course-title">KHÓA TOÁN 12 - THẦY TRÍ</div>
+                        <div class="course-title">🔒 Bài giảng đang khóa (Nhập mã để mở)</div>
                         <div class="card-footer">
                             <span>Bài giảng gốc</span>
                             <span style="color:var(--success); font-weight:700">Đang diễn ra</span>
@@ -134,7 +146,7 @@
                     </div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> ANH GIÁO KID</div>
-                        <div class="course-title">KHÓA TOÁN - ANH GIÁO KID</div>
+                        <div class="course-title">🔒 Bài giảng đang khóa (Nhập mã để mở)</div>
                         <div class="card-footer">
                             <span>Chuyên đề hay</span>
                             <span style="color:var(--success); font-weight:700">Đang diễn ra</span>
@@ -149,7 +161,7 @@
                     </div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> CÔ SƯƠNG MAI</div>
-                        <div class="course-title">KHÓA VĂN - CÔ SƯƠNG MAI</div>
+                        <div class="course-title">🔒 Bài giảng đang khóa (Nhập mã để mở)</div>
                         <div class="card-footer">
                             <span>Bài học mới</span>
                             <span style="color:var(--success); font-weight:700">Sẵn sàng</span>
@@ -164,7 +176,7 @@
                     </div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> CÔ SEN</div>
-                        <div class="course-title">KHÓA SỬ - CÔ SEN</div>
+                        <div class="course-title">🔒 Bài giảng đang khóa (Nhập mã để mở)</div>
                         <div class="card-footer">
                             <span>Luyện thi ĐH</span>
                             <span style="color:var(--success); font-weight:700">Sẵn sàng</span>
@@ -179,7 +191,7 @@
                     </div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> CÔ MAI PHƯƠNG</div>
-                        <div class="course-title">KHÓA ANH - CÔ MAI PHƯƠNG</div>
+                        <div class="course-title">🔒 Bài giảng đang khóa (Nhập mã để mở)</div>
                         <div class="card-footer">
                             <span>Trọng tâm kiến thức</span>
                             <span style="color:var(--success); font-weight:700">Sẵn sàng</span>
@@ -194,7 +206,7 @@
                     </div>
                     <div class="info-box">
                         <div class="teacher-name"><span class="material-symbols-outlined" style="font-size:15px">verified</span> CÔ MAI ANH</div>
-                        <div class="course-title">KHÓA ĐỊA - CÔ MAI ANH</div>
+                        <div class="course-title">🔒 Bài giảng đang khóa (Nhập mã để mở)</div>
                         <div class="card-footer">
                             <span>Kỹ năng Atlat</span>
                             <span style="color:var(--success); font-weight:700">Sẵn sàng</span>
@@ -212,13 +224,21 @@
             <div class="modal-icon"><span class="material-symbols-outlined" style="font-size:32px">lock</span></div>
             <h3 id="targetTitle">Yêu Cầu Mở Khóa</h3>
             <p style="color:var(--text-sub); font-size:0.9rem">Nhập Mã Tổng 24h để mở khóa bài giảng từ hệ thống.</p>
+            
             <input type="text" id="passInput" placeholder="NHẬP MÃ XÁC THỰC...">
+            
             <button class="btn-start" onclick="verifyAccess()">Xác Nhận & Vào Học</button>
-            <div>
-                <a href="https://link4m.org/Akwnp0AH" target="_blank" class="get-code-link">
-                    Lấy mã mở khóa nhanh tại đây <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span>
+            
+            <div class="action-links">
+                <a href="https://link4m.org/Akwnp0AH" target="_blank" class="action-btn btn-get-code">
+                    <span class="material-symbols-outlined" style="font-size:16px">vpn_key</span> Lấy mã mở khóa
+                </a>
+                
+                <a href="#" target="_blank" class="action-btn btn-guide">
+                    <span class="material-symbols-outlined" style="font-size:16px">play_circle</span> Video Hướng Dẫn
                 </a>
             </div>
+            
             <p id="alertMsg" style="margin-top:15px; font-weight:700; color:var(--danger)"></p>
         </div>
     </div>
